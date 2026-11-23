@@ -1,0 +1,6 @@
+project_id = "rabisco"
+
+# A função é chamada por um Database Webhook (não por um usuário logado),
+# então não exige JWT; ela se protege com o cabeçalho x-webhook-secret.
+[functions.notify-discord]
+verify_jwt = false

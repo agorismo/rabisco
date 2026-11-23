@@ -1,0 +1,22 @@
+name: Sugerir uma ideia
+description: Um pincel novo, uma função, uma melhoria
+labels: [enhancement]
+body:
+  - type: textarea
+    id: ideia
+    attributes:
+      label: Qual é a ideia?
+    validations:
+      required: true
+  - type: textarea
+    id: motivo
+    attributes:
+      label: Por que seria legal?
+  - type: dropdown
+    id: ajuda
+    attributes:
+      label: Você quer implementar?
+      options:
+        - Sim
+        - Talvez, com ajuda
+        - Não, só estou sugerindo

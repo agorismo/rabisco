@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rabisco: um paint online, aberto e colaborativo.">
+  <title>Rabisco</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="./">rabisco</a>
+    <input id="titulo" maxlength="80" placeholder="Título do desenho" aria-label="Título do desenho">
+    <span id="sala-info" class="pill" hidden></span>
+    <nav class="actions" aria-label="Ações">
+      <button id="btn-undo" title="Desfazer (Ctrl+Z)">↶ Desfazer</button>
+      <button id="btn-redo" title="Refazer (Ctrl+Shift+Z)">↷ Refazer</button>
+      <button id="btn-clear" title="Apaga os seus traços">Limpar</button>
+      <button id="btn-png">PNG</button>
+      <button id="btn-save">Salvar .json</button>
+      <button id="btn-open">Abrir .json</button>
+      <button id="btn-room">Sala</button>
+      <a class="pill" href="galeria.html">Galeria</a>
+      <button id="btn-login" hidden>Entrar com Discord</button>
+      <button id="btn-publish" class="primary" hidden>Publicar</button>
+    </nav>
+    <input id="file-open" type="file" accept="application/json,.json" hidden>
+  </header>
+
+  <main class="workspace">
+    <aside class="tools" aria-label="Ferramentas">
+      <button data-tool="pen" aria-pressed="true" title="Lápis">✏️</button>
+      <button data-tool="marker" aria-pressed="false" title="Marcador">🖍️</button>
+      <button data-tool="eraser" aria-pressed="false" title="Borracha">🧽</button>
+      <label for="cor">cor</label>
+      <input id="cor" type="color" value="#2a2530">
+      <div class="swatches" id="swatches"></div>
+      <label for="tamanho">tamanho</label>
+      <input id="tamanho" type="range" min="1" max="48" value="8">
+    </aside>
+
+    <section class="stage">
+      <div id="paper">
+        <canvas id="main" width="1200" height="800"></canvas>
+        <canvas id="live" width="1200" height="800"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

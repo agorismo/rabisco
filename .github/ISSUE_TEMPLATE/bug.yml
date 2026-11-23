@@ -1,0 +1,26 @@
+name: Relatar um bug
+description: Algo não funciona como deveria
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por avisar! **Não** cole tokens, chaves ou dados pessoais aqui.
+        Para falhas de segurança, use o relato privado (aba Security).
+  - type: textarea
+    id: o-que-aconteceu
+    attributes:
+      label: O que aconteceu?
+      description: Conte o que você esperava e o que viu.
+    validations:
+      required: true
+  - type: textarea
+    id: passos
+    attributes:
+      label: Passos para reproduzir
+      placeholder: "1. Abri uma sala\n2. Desenhei com a caneta\n3. ..."
+  - type: input
+    id: ambiente
+    attributes:
+      label: Navegador e dispositivo
+      placeholder: Firefox 130, Windows 11 / Chrome Android, caneta
