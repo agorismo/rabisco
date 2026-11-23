@@ -17,7 +17,8 @@ export function imageUrl(path) {
 
 export async function latestPosts(limit = 5) {
   const query = new URLSearchParams({
-    select: "id,title,image_path,created_at,profiles(username)",
+    // "!posts_user_id_fkey" desambigua a relação (likes/comments também ligam posts a profiles)
+    select: "id,title,image_path,created_at,profiles!posts_user_id_fkey(username)",
     hidden: "eq.false",
     order: "created_at.desc",
     limit: String(Math.min(Math.max(limit, 1), 10)),
