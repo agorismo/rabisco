@@ -28,8 +28,8 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Gerar config.js a partir das variáveis do repositório
         env:
-          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || vars.SUPABASE_ANON_KEY }}
         run: |
           printf 'export default {\n  SUPABASE_URL: "%s",\n  SUPABASE_ANON_KEY: "%s",\n};\n' "$SUPABASE_URL" "$SUPABASE_ANON_KEY" > web/config.js
       - uses: actions/upload-pages-artifact@v3
