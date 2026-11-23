@@ -13,7 +13,9 @@ async function load() {
   }
 
   const query = new URLSearchParams({
-    select: "id,title,image_path,created_at,profiles(username)",
+    // "!posts_user_id_fkey" diz qual relação usar: likes/comments/reports também
+    // ligam posts a profiles, e sem a dica o PostgREST responde "HTTP 300".
+    select: "id,title,image_path,created_at,profiles!posts_user_id_fkey(username)",
     hidden: "eq.false",
     order: "created_at.desc",
     limit: "48",
