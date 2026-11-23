@@ -22,10 +22,19 @@ async function load() {
   let posts;
   try {
     const res = await fetch(`${cfg.SUPABASE_URL}/rest/v1/posts?${query}`, { headers: restHeaders() });
-    if (!res.ok) throw new Error(String(res.status));
+    if (!res.ok) {
+      let detail = "";
+      try {
+        detail = (await res.json()).message ?? "";
+      } catch {
+        // resposta sem JSON
+      }
+      throw new Error(`HTTP ${res.status} ${detail}`.trim());
+    }
     posts = await res.json();
-  } catch {
-    msg.textContent = "Não consegui carregar a galeria agora.";
+  } catch (err) {
+    console.error("galeria:", err);
+    msg.textContent = `Não consegui carregar a galeria agora (${err.message}).`;
     return;
   }
 
